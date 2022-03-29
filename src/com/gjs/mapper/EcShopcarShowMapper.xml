@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gjs.mapper.EcShopcarShowMapper">
+    <resultMap id="BaseResultMap" type="com.gjs.pojo.EcShopCarShow">
+        <id column="ID" property="id" jdbcType="INTEGER"/>
+        <result column="articleId" property="articleid" jdbcType="INTEGER"/>
+        <result column="buyNum" property="buynum" jdbcType="INTEGER"/>
+        <result column="userId" property="userid" jdbcType="INTEGER"/>
+        <result column="image" property="image" jdbcType="VARCHAR"/>
+        <result column="title" property="title" jdbcType="VARCHAR"/>
+        <result column="price" property="price" jdbcType="DOUBLE"/>
+        <result column="discount" property="discount" jdbcType="DOUBLE"/>
+    </resultMap>
+    <select id="selectByUserId" resultMap="BaseResultMap" parameterType="int">
+
+select s.id,s.userId,s.articleid,a.image,a.title,a.discount,a.price,s.buyNum from ec_shopcar s,ec_article a where userid=#{userid} and s.articleid = a.id;
+    </select>
+
+</mapper>
